@@ -1,0 +1,8 @@
+{
+  "generator-react-webpack": {
+    "appName": "reactOverwatch",
+    "style": "sass",
+    "postcss": false,
+    "generatedWithVersion": 3
+  }
+}
