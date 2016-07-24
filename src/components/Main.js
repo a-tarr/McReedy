@@ -7,30 +7,35 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import UserDva from './UserDva'
 import UserHanzo from './UserHanzo'
 import logo from '../images/logo.png'
+import Paper from 'material-ui/Paper'
+import Subheader from 'material-ui/Subheader'
 
 class AppComponent extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.changeMiddleSection = ::this.changeMiddleSection;
+		this.state ={
+			selected: 'Leaderboard'
+		}
+	}
+
+	changeMiddleSection(user) {
+		this.setState({selected: user});
+	}
+
   render() {
     return (
     	<MuiThemeProvider>
 		    <div style={styles.index}>
 		    	<img style={styles.img} src={logo}/>
-		      <div style={styles.user}>
-		    		<Leaderboard list={users}/>
+		      <div style={styles.leaderboard}>
+		    		<Leaderboard list={users} click={this.changeMiddleSection}/>
 	      	</div>
-	      	<div style={styles.hero}>
-		      	<UserDva user='bapplebo-1602'/>
-		      	<UserDva user='AdamReyy-1354'/>
-		      	<UserDva user='LotsOfLurv-6305'/>
-		      	<UserDva user='GotMelk-1385'/>
-		      	<UserDva user='MrSushii-1937'/>
-		      	<UserDva user='Phatlipz-1655'/>      	
-
-		      	<UserHanzo user='bapplebo-1602'/>
-		      	<UserHanzo user='AdamReyy-1354'/>
-		      	<UserHanzo user='LotsOfLurv-6305'/>
-		      	<UserHanzo user='GotMelk-1385'/>
-		      	<UserHanzo user='MrSushii-1937'/>
-		      	<UserHanzo user='Phatlipz-1655'/>
+	      	<div style={styles.middle}>
+		      	<Paper>
+		      		<Subheader>{this.state.selected}</Subheader>
+			      </Paper>
 		      </div>
 		    </div>
 	    </MuiThemeProvider>
@@ -59,7 +64,12 @@ var styles ={
 		width: 500,
 		height: 'auto'
 	},
-	user: {
+	middle: {
+		width: 650,
+		float: 'right',
+		margin: '0 auto'
+	},
+	leaderboard: {
 		margin: '0 auto',
 		float: 'left',
 		maxWidth: 200
@@ -69,7 +79,5 @@ var styles ={
 		maxWidth: 220
 	}
 }
-AppComponent.defaultProps = {
-};
 
 export default AppComponent;

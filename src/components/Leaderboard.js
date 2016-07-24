@@ -12,11 +12,22 @@ class Leaderboard extends Component {
 
     constructor(props) {
         super(props);
+        this.getTotalData = this.getTotalData.bind(this);
+        this.state = {
+        	totalKills: 0,
+        	totalDeaths: 0
+        }
+    }
+
+    getTotalData(totals) {
+    	this.setState((previousState) => ({ totalKills: previousState.totalKills + totals.eliminations,
+    																			totalDeaths: previousState.totalDeaths + totals.deaths
+    																		}));
     }
 
     loadUsers() {
     	return this.props.list.map(user => {
-  				return <ListItem style={style.user}><User user={user}/></ListItem>
+  				return <ListItem style={style.user} onClick={() => this.props.click(user)}><User user={user} onLoad={this.getTotalData}/></ListItem>
 			});
     }
 
@@ -26,6 +37,10 @@ class Leaderboard extends Component {
 	      	<List>
 	        	<Subheader>Leaderboard</Subheader>
 	      		{this.loadUsers()}
+		    		<ListItem>
+		    			Total kills: {this.state.totalKills} <br/>
+	    				Total deaths: {this.state.totalDeaths}
+	    			</ListItem>
 	    		</List>
     		</Paper>
 			);
@@ -34,7 +49,7 @@ class Leaderboard extends Component {
 
 const style = {
 	user: {
-		webkitAppearance: 'none'
+		WebkitAppearance: 'none'
 	}
 }
 

@@ -17,8 +17,9 @@ class User extends React.Component {
 		}).then(response => response.json())
 		  .then(data => {
 		  	this.setState({data: data});
+		  	this.props.onLoad(this.state.data.game_stats);
 	    })
-	    .catch(err => { 
+	    .catch(err => {
 		    console.log('Fetch Error :-S', err);
 		  });
 	}
