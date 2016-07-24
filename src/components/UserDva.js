@@ -11,7 +11,7 @@ class UserDva extends Component {
 	}
 
 	fetchData() {
-		fetch('https://owapi.net/api/v2/u/' + this.props.user +'/heroes/dva', { 
+		fetch('https://crossorigin.me/https://owapi.net/api/v2/u/' + this.props.user +'/heroes/dva', { 
 			method: 'get'
 		}).then(response => response.json())
 		  .then(data => {

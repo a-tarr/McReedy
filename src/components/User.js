@@ -12,7 +12,7 @@ class User extends React.Component {
 	}
 
 	fetchData() {
-		fetch('https://owapi.net/api/v2/u/' + this.props.user +'/stats', {
+		fetch('https://crossorigin.me/https://owapi.net/api/v2/u/' + this.props.user +'/stats/general', {
 			method: 'get'
 		}).then(response => response.json())
 		  .then(data => {
@@ -44,7 +44,7 @@ class User extends React.Component {
 				  	<div><b>{(user.battletag).split('-')[0]}</b></div>
 				  	<div>Kills: {user.game_stats.eliminations}</div>
 				  	<div>Deaths: {user.game_stats.deaths}</div>
-				  	<div>Time played: {user.game_stats.time_played} hours</div>
+				  	<div>Time played: {user.game.stats.time_played} hours</div>
 				</div>
 			);
 		}	else {

@@ -6,13 +6,14 @@ import Leaderboard from './Leaderboard';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import UserDva from './UserDva'
 import UserHanzo from './UserHanzo'
+import logo from '../src/images/logo.png'
 
 class AppComponent extends React.Component {
   render() {
     return (
     	<MuiThemeProvider>
 		    <div style={styles.index}>
-		    	<img style={styles.img} src='../images/logo.png'/>
+		    	<img style={styles.img} src={logo}/>
 		      <div style={styles.user}>
 		    		<Leaderboard list={users}/>
 	      	</div>
@@ -22,7 +23,7 @@ class AppComponent extends React.Component {
 		      	<UserDva user='LotsOfLurv-6305'/>
 		      	<UserDva user='GotMelk-1385'/>
 		      	<UserDva user='MrSushii-1937'/>
-		      	<UserDva user='Phatlipz-1655'/>	      	
+		      	<UserDva user='Phatlipz-1655'/>      	
 
 		      	<UserHanzo user='bapplebo-1602'/>
 		      	<UserHanzo user='AdamReyy-1354'/>

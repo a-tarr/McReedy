@@ -11,7 +11,7 @@ class UserHanzo extends Component {
 	}
 
 	fetchData() {
-		fetch('https://owapi.net/api/v2/u/' + this.props.user +'/heroes/hanzo', { 
+		fetch('https://crossorigin.me/https://owapi.net/api/v2/u/' + this.props.user +'/heroes/hanzo', { 
 			method: 'get'
 		}).then(response => response.json())
 		  .then(data => {
