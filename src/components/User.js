@@ -43,6 +43,7 @@ class User extends React.Component {
 			return (
 				<div>
 				  	<div><b>{(user.battletag).split('-')[0]}</b></div>
+				  	<div><b>Level {user.overall_stats.prestige}{user.overall_stats.level}</b></div>
 				  	<div>Kills: {user.game_stats.eliminations}</div>
 				  	<div>Deaths: {user.game_stats.deaths}</div>
 				  	<div>Time played: {user.game_stats.time_played} hours</div>

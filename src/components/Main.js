@@ -2,20 +2,18 @@ require('normalize.css/normalize.css');
 require('styles/App.css');
 
 import React from 'react';
-import Leaderboard from './Leaderboard';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import UserDva from './UserDva'
-import UserHanzo from './UserHanzo'
 import logo from '../images/logo.png'
-import Paper from 'material-ui/Paper'
-import Subheader from 'material-ui/Subheader'
+
+import Leaderboard from './Leaderboard';
+import ExpandedUser from './ExpandedUser';
 
 class AppComponent extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.changeMiddleSection = ::this.changeMiddleSection;
-		this.state ={
+		this.state = {
 			selected: 'Leaderboard'
 		}
 	}
@@ -33,9 +31,7 @@ class AppComponent extends React.Component {
 		    		<Leaderboard list={users} click={this.changeMiddleSection}/>
 	      	</div>
 	      	<div style={styles.middle}>
-		      	<Paper>
-		      		<Subheader>{this.state.selected}</Subheader>
-			      </Paper>
+	      		<ExpandedUser user={this.state.selected} />
 		      </div>
 		    </div>
 	    </MuiThemeProvider>
