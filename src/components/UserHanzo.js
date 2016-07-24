@@ -15,7 +15,6 @@ class UserHanzo extends Component {
 			method: 'get'
 		}).then(response => response.json())
 		  .then(data => {
-		  	console.log(data);
 		  	this.setState({data: data});
 	    })
 	    .catch(err => {  

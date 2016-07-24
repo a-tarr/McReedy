@@ -6,7 +6,7 @@ import Leaderboard from './Leaderboard';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import UserDva from './UserDva'
 import UserHanzo from './UserHanzo'
-import logo from '../src/images/logo.png'
+import logo from '../images/logo.png'
 
 class AppComponent extends React.Component {
   render() {

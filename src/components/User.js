@@ -44,7 +44,7 @@ class User extends React.Component {
 				  	<div><b>{(user.battletag).split('-')[0]}</b></div>
 				  	<div>Kills: {user.game_stats.eliminations}</div>
 				  	<div>Deaths: {user.game_stats.deaths}</div>
-				  	<div>Time played: {user.game.stats.time_played} hours</div>
+				  	<div>Time played: {user.game_stats.time_played} hours</div>
 				</div>
 			);
 		}	else {
