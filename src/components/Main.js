@@ -68,7 +68,7 @@ var styles ={
 	leaderboard: {
 		margin: '0 auto',
 		float: 'left',
-		maxWidth: 200
+		maxWidth: 250
 	},
 	hero: {
 		margin: '0 auto',

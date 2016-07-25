@@ -39,8 +39,8 @@ class Leaderboard extends Component {
 	        	<Subheader>Leaderboard</Subheader>
 	      		{this.loadUsers()}
 		    		<ListItem>
-		    			Total kills: {this.state.totalKills} <br/>
-	    				Total deaths: {this.state.totalDeaths}
+		    			<b>Total kills:</b> {this.state.totalKills} <br/>
+	    				<b>Total deaths:</b> {this.state.totalDeaths}
 	    			</ListItem>
 	    		</List>
     		</Paper>
