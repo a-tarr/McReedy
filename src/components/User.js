@@ -1,31 +1,17 @@
 
 import React from 'react';
+import { connect } from 'react-redux';
+import { fetchUserStats } from '../actions';
 import LinearProgress from 'material-ui/LinearProgress';
 
 class User extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {
-			data: {}
-		};
-	}
-
-	fetchData() {
-		fetch('https://crossorigin.me/https://owapi.net/api/v2/u/' + this.props.user +'/stats/general', {
-			method: 'get'
-		}).then(response => response.json())
-		  .then(data => {
-		  	this.setState({data: data});
-		  	this.props.onLoad(this.state.data.game_stats);
-	    })
-	    .catch(err => {
-		    console.log('Fetch Error :-S', err);
-		  });
 	}
 
 	componentDidMount() {
-		this.fetchData();
+		this.props.dispatch(fetchUserStats(this.props.user));
 	}
 
 	isEmpty(object) {
@@ -38,7 +24,11 @@ class User extends React.Component {
 	}
 
 	render() {
-		var user = this.state.data;
+		const user2 = this.props.user;
+		if (!this.isEmpty(this.props.data.userStats)) {
+			console.log(this.props.data.userStats.find(x => x.user === user2));
+		}
+		var user = {};
 		if (!this.isEmpty(user)) {
 			return (
 				<div>
@@ -64,4 +54,9 @@ class User extends React.Component {
 		}
 	}
 }
-export default User;
+
+function mapStateToProps(state) {
+	return { data: state.data };
+}
+
+export default connect(mapStateToProps)(User);

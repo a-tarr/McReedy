@@ -7,28 +7,34 @@
  *          you edit them, they are not updated again.
  */
 import { combineReducers } from 'redux';
-import { FETCH_USER, FETCH_USER_SUCCESS, FETCH_USER_FAILURE } from '../actions/actions.js';
+import { FETCH_USER, FETCH_USER_SUCCESS } from '../actions/';
 
-const initialState = {  
-    data: {},
-    isFetching: false
+const initialState = {
+  fetching: false,
+  userStats: {}
 };
 
-export function data (state = initialState, action) {  
-    switch (action.type) {
-	    case DATA_FETCH_BEGIN: {
-	        return { ...state, isFetching: true };
-	    }
-	    // case DATA_FETCH_SUCCESS: {
-	    //     return { isFetching: false, data: { ...state.data, action.payload }};
-	    // }
-	    case DATA_FETCH_ERROR: {
-	        return { ...state, isFetching: false };
-	    }
+function data (state = initialState, action) {
+  switch (action.type) {
+    case FETCH_USER:
+      return Object.assign({}, state, {
+      	fetching: true
+      });
+    case FETCH_USER_SUCCESS:
+      return Object.assign({}, state, {
+      	fetching: false,
+      	userStats: [
+          ...state.userStats,
+          {
+            user: action.user,
+            data: action.data
+          }
+        ]
+      });
     default:
-        return state;
+      return state;
   }
 }
 
-const reducers = { app };
+const reducers = { data };
 module.exports = combineReducers(reducers);
