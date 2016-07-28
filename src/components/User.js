@@ -23,7 +23,7 @@ class User extends React.Component {
 				</div>
 			)
 		} else {
-			return  <div>shit</div>
+			return  <div>Loading...</div>
 		}
 	}
 }
