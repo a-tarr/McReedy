@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import User from './User';
+import UserContainer from './UserContainer';
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Paper from 'material-ui/Paper';
@@ -14,44 +14,48 @@ class Leaderboard extends Component {
         super(props);
         this.getTotalData = this.getTotalData.bind(this);
         this.state = {
-        	totalKills: 0,
-        	totalDeaths: 0
+            totalKills: 0,
+            totalDeaths: 0
         }
     }
 
     getTotalData(totals) {
-    	this.setState((previousState) =>
-    		({ totalKills: previousState.totalKills + totals.eliminations,
-    			 totalDeaths: previousState.totalDeaths + totals.deaths
-    	  }));
+        this.setState((previousState) =>
+            ({ totalKills: previousState.totalKills + totals.eliminations,
+                 totalDeaths: previousState.totalDeaths + totals.deaths
+          }));
     }
 
     loadUsers() {
-    	return this.props.list.map(user => {
-  				return <ListItem style={style.user} onClick={() => this.props.click(user)}><User user={user} onLoad={this.getTotalData}/></ListItem>
-			});
+      return this.props.list.map((user, index) => {
+        return (
+          <ListItem key={index} style={style.user} onClick={() => this.props.click(user)}>
+            <UserContainer user={user} />
+          </ListItem>
+        );
+    });
     }
 
     render() {
       return (
-      	<Paper>
-	      	<List>
-	        	<Subheader>Leaderboard</Subheader>
-	      		{this.loadUsers()}
-		    		<ListItem>
-		    			<b>Total kills:</b> {this.state.totalKills} <br/>
-	    				<b>Total deaths:</b> {this.state.totalDeaths}
-	    			</ListItem>
-	    		</List>
-    		</Paper>
-			);
+        <Paper>
+            <List>
+                <Subheader>Leaderboard</Subheader>
+                {this.loadUsers()}
+                    <ListItem>
+                        <b>Total kills:</b> {this.state.totalKills} <br/>
+                        <b>Total deaths:</b> {this.state.totalDeaths}
+                    </ListItem>
+                </List>
+            </Paper>
+            );
     }
 }
 
 const style = {
-	user: {
-		WebkitAppearance: 'none'
-	}
+    user: {
+        WebkitAppearance: 'none'
+    }
 }
 
 export default Radium(Leaderboard);

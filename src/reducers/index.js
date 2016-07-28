@@ -11,10 +11,10 @@ import { FETCH_USER, FETCH_USER_SUCCESS } from '../actions/';
 
 const initialState = {
   fetching: false,
-  userStats: {}
+  userStats: []
 };
 
-function data (state = initialState, action) {
+function store (state = initialState, action) {
   switch (action.type) {
     case FETCH_USER:
       return Object.assign({}, state, {
@@ -36,5 +36,5 @@ function data (state = initialState, action) {
   }
 }
 
-const reducers = { data };
+const reducers = { store };
 module.exports = combineReducers(reducers);

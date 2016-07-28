@@ -1,35 +1,12 @@
-
 import React from 'react';
-import { connect } from 'react-redux';
-import { fetchUserStats } from '../actions';
-import LinearProgress from 'material-ui/LinearProgress';
 
 class User extends React.Component {
-
-	constructor(props) {
-		super(props);
-	}
-
-	componentDidMount() {
-		this.props.dispatch(fetchUserStats(this.props.user));
-	}
-
-	isEmpty(object) {
-	  for(var key in object) {
-	    if(object.hasOwnProperty(key)) {
-	      return false;
-	    }
-	  }
-	  return true;
-	}
-
 	render() {
-		const user2 = this.props.user;
-		if (!this.isEmpty(this.props.data.userStats)) {
-			console.log(this.props.data.userStats.find(x => x.user === user2));
+		var user = this.props.user;
+		if (user != undefined) {
+			user = user.data;
 		}
-		var user = {};
-		if (!this.isEmpty(user)) {
+		if (user != undefined) {
 			return (
 				<div>
 				  	<div><b>{(user.battletag).split('-')[0]}</b></div>
@@ -44,19 +21,12 @@ class User extends React.Component {
 				  	<br/>
 				  	<div>Time played: {user.game_stats.time_played} hours</div>
 				</div>
-			);
-		}	else {
-			return (
-				<div>
-				  	<div><LinearProgress style={{height: '50px', width: '150'}} mode="indeterminate" /></div>
-				</div>
-			);
+			)
+		} else {
+			return  <div>shit</div>
 		}
 	}
 }
 
-function mapStateToProps(state) {
-	return { data: state.data };
-}
 
-export default connect(mapStateToProps)(User);
+export default User;
