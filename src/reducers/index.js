@@ -10,7 +10,7 @@ import { combineReducers } from 'redux';
 import { FETCH_USER, FETCH_USER_SUCCESS } from '../actions/';
 
 const initialState = {
-  fetching: false,
+  loading: true,
   userStats: []
 };
 
@@ -18,11 +18,11 @@ function store (state = initialState, action) {
   switch (action.type) {
     case FETCH_USER:
       return Object.assign({}, state, {
-      	fetching: true
+      	loading: true
       });
     case FETCH_USER_SUCCESS:
       return Object.assign({}, state, {
-      	fetching: false,
+      	loading: false,
       	userStats: [
           ...state.userStats,
           {
