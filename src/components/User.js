@@ -16,7 +16,7 @@ class User extends React.Component {
 				  	<div>Deaths: {user.game_stats.deaths}</div>
 				  	<br/>
 				  	<div>Offensive Assists: {user.game_stats.offensive_assists}</div>
-				  	<div>Defensive Assists: {user.game_stats.defensive_assists}</div>
+						<div>Defensive Assists: {user.game_stats.defensive_assists}</div>
 				  	<div>Healing Done: {user.game_stats.healing_done}</div>
 				  	<br/>
 				  	<div>Time played: {user.game_stats.time_played} hours</div>

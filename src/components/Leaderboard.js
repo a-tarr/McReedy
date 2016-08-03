@@ -20,10 +20,10 @@ class Leaderboard extends Component {
     }
 
     getTotalData(totals) {
-        this.setState((previousState) =>
-            ({ totalKills: previousState.totalKills + totals.eliminations,
-                 totalDeaths: previousState.totalDeaths + totals.deaths
-          }));
+      this.setState((previousState) =>
+          ({ totalKills: previousState.totalKills + totals.eliminations,
+             totalDeaths: previousState.totalDeaths + totals.deaths
+        }));
     }
 
     loadUsers() {

@@ -50,7 +50,7 @@ var users = [
 
 var styles ={
 	index: {
-		fontFamily: "'Roboto Mono', monospace'",
+		fontFamily: '"Roboto Mono", monospace',
 		margin: '0 auto',
 		maxWidth: 900
 	},
