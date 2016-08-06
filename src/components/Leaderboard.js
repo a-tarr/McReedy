@@ -1,9 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import UserContainer from './UserContainer';
-import {List, ListItem} from 'material-ui/List';
-import Subheader from 'material-ui/Subheader';
-import Paper from 'material-ui/Paper';
-import Radium from 'radium';
 
 class Leaderboard extends Component {
     static propTypes = {
@@ -29,26 +25,24 @@ class Leaderboard extends Component {
     loadUsers() {
       return this.props.list.map((user, index) => {
         return (
-          <ListItem key={index} style={style.user} onClick={() => this.props.click(user)}>
+          <div key={index} style={style.user} onClick={() => this.props.click(user)}>
             <UserContainer user={user} />
-          </ListItem>
+          </div>
         );
     });
     }
 
     render() {
       return (
-        <Paper>
-            <List>
-                <Subheader>Leaderboard</Subheader>
-                {this.loadUsers()}
-                    <ListItem>
-                        <b>Total kills:</b> {this.state.totalKills} <br/>
-                        <b>Total deaths:</b> {this.state.totalDeaths}
-                    </ListItem>
-                </List>
-            </Paper>
-            );
+        <div>
+          <div>Leaderboard</div>
+          {this.loadUsers()}
+          <div>
+            <b>Total kills:</b> {this.state.totalKills} <br/>
+            <b>Total deaths:</b> {this.state.totalDeaths}
+          </div>
+        </div>
+      );
     }
 }
 
@@ -58,4 +52,4 @@ const style = {
     }
 }
 
-export default Radium(Leaderboard);
+export default Leaderboard;

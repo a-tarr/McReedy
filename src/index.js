@@ -3,10 +3,15 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import configureStore from './stores';
 import App from './containers/App';
-import injectTapEventPlugin from 'react-tap-event-plugin';
+
+import { Users } from './sources/users';
+import { fetchUserStats } from './actions';
 
 const store = configureStore();
-injectTapEventPlugin();
+
+Users.map(user => {
+  store.dispatch(fetchUserStats(user));
+})
 
 render(
   <Provider store={store}>

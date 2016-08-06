@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Paper from 'material-ui/Paper';
-import Subheader from 'material-ui/Subheader';
-
 var DoughnutChart = require('react-chartjs').Doughnut;
 
 class ExpandedUser extends Component {
@@ -40,17 +37,17 @@ class ExpandedUser extends Component {
 
   render() {
     return (
-    	<Paper>
-    		<Subheader>{this.props.user}</Subheader>
+      <div>
+    		<div>{this.props.user}</div>
   			<div>
   				Kills per deaths
   				{this.showStats()}
-				</div>
+  			</div>
         <div>
           Average healing per game
-			    {this.showAvgHealingStats()}
+  		    {this.showAvgHealingStats()}
         </div>
-  		</Paper>
+      </div>
     );
   }
 }
