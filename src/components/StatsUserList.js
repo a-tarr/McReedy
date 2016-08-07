@@ -1,16 +1,21 @@
 'use strict';
 import React from 'react';
+import style from '../styles/StatsUserList.css'
 
 class StatsUserList extends React.Component {
 
   render() {
-    console.log(this.props.list);
     return (
-      <div>
-        {this.props.list.map(user => {
-          return <div>{user.user} {user.value}</div>
-        })}
-      </div>
+      <section>
+      {this.props.list.map(user => {
+        return (
+          <div className={style.container}>
+            <div className={style.user}>{user.user}</div>
+            <div><b>{user.value}</b></div>
+          </div>
+        );
+      })}
+      </section>
     );
   }
 }

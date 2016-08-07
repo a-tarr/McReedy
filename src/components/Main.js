@@ -13,9 +13,9 @@ class Main extends React.Component {
           <div className={style.row}>
             <div className={style.col}><Stats section='overall_stats' stat='level' /></div>
             <div className={style.col}><Stats section='game_stats' stat='kpd' /></div>
-            <div className={style.col}></div>
-            <div className={style.col}></div>
-            <div className={style.col}></div>
+            <div className={style.col}><Stats section='average_stats' stat='damage_done_avg' /></div>
+            <div className={style.col}><Stats section='average_stats' stat='healing_done_avg' /></div>
+            <div className={style.col}><Stats section='game_stats' stat='time_played' /></div>
           </div>
         </section>
       </section>

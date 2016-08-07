@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  padding: 5px;
+}
+
+.user {
+  text-align: left;
+  flex-grow: 1;
+}
