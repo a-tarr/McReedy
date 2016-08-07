@@ -1,8 +1,7 @@
 'use strict';
 import React from 'react';
 import style from '../styles/App.css';
-import SelectionContainer from './SelectionContainer';
-import StatsChart from './StatsChart';
+import Stats from './Stats';
 
 class Main extends React.Component {
 
@@ -11,10 +10,9 @@ class Main extends React.Component {
       <section>
         <header className={style.header}>HIGHNOON</header>
         <section className={style.body}>
-          <SelectionContainer />
           <div className={style.row}>
-            <div className={style.col}><StatsChart /></div>
-            <div className={style.col}>a </div>
+            <div className={style.col}><Stats section='overall_stats' stat='level' /></div>
+            <div className={style.col}><Stats section='game_stats' stat='kpd' /></div>
             <div className={style.col}></div>
             <div className={style.col}></div>
             <div className={style.col}></div>
