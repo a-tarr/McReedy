@@ -1,79 +1,34 @@
-require('normalize.css/normalize.css');
-require('styles/App.css');
-
+'use strict';
 import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import logo from '../images/logo.png'
+import style from '../styles/App.css';
+import Stats from './Stats';
 
-import Leaderboard from './Leaderboard';
-import ExpandedUser from './ExpandedUser';
-
-class AppComponent extends React.Component {
-
-	constructor(props) {
-		super(props);
-		this.changeMiddleSection = ::this.changeMiddleSection;
-		this.state = {
-			selected: 'Leaderboard'
-		}
-	}
-
-	changeMiddleSection(user) {
-		this.setState({selected: user});
-	}
+class Main extends React.Component {
 
   render() {
     return (
-    	<MuiThemeProvider>
-		    <div style={styles.index}>
-		    	<img style={styles.img} src={logo}/>
-		      <div style={styles.leaderboard}>
-		    		<Leaderboard list={users} click={this.changeMiddleSection}/>
-	      	</div>
-	      	<div style={styles.middle}>
-	      		<ExpandedUser user={this.state.selected} />
-		      </div>
-		    </div>
-	    </MuiThemeProvider>
+      <section>
+        <header className={style.header}>HIGHNOON</header>
+        <section className={style.body}>
+          <div className={style.row}>
+            <div className={style.col}><Stats section='overall_stats' stat='level' /></div>
+            <div className={style.col}><Stats section='game_stats' stat='kpd' /></div>
+            <div className={style.col}><Stats section='average_stats' stat='damage_done_avg' /></div>
+            <div className={style.col}><Stats section='average_stats' stat='healing_done_avg' /></div>
+            <div className={style.col}><Stats section='game_stats' stat='time_played' /></div>
+          </div>
+          <div className={style.row}>
+            <div className={style.col}><Stats section='average_stats' stat='deaths_avg' /></div>
+            <div className={style.col}><Stats section='average_stats' stat='melee_final_blows_avg' /></div>
+            <div className={style.col}><Stats section='average_stats' stat='eliminations_avg' /></div>
+            <div className={style.col}><Stats section='average_stats' stat='final_blows_avg' /></div>
+            <div className={style.col}><Stats section='game_stats' stat='healing_done_most_in_game' /></div>
+          </div>
+        </section>
+      </section>
     );
   }
+
 }
 
-var users = [
-	'bapplebo-1602',
-	'AdamReyy-1354',
-	'LotsOfLurv-6305',
-	'GotMelk-1385',
-	'MrSushii-1937',
-	'Phatlipz-1655'
-];
-
-var styles ={
-	index: {
-		fontFamily: '"Roboto Mono", monospace',
-		margin: '0 auto',
-		maxWidth: 900
-	},
-	img: {
-		display: 'block',
-		margin: '0 auto',
-		width: 500,
-		height: 'auto'
-	},
-	middle: {
-		width: 650,
-		float: 'right',
-		margin: '0 auto'
-	},
-	leaderboard: {
-		margin: '0 auto',
-		float: 'left',
-		maxWidth: 250
-	},
-	hero: {
-		margin: '0 auto',
-		maxWidth: 220
-	}
-}
-
-export default AppComponent;
+export default Main;
