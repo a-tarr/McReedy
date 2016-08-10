@@ -46,4 +46,8 @@ body {
     flex-direction: column;
     flex-wrap: nowrap;
   }
+
+  .col {
+    min-width: 300px;
+  }
 }
